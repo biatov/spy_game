@@ -1,0 +1,61 @@
+/* Основной контейнер */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Заголовок */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Контейнер игры */
+#game-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Кнопка "Сыграть еще" */
+#play-again-button {
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#play-again-button:hover {
+    background-color: #0056b3;
+}
+
+/* Кнопки */
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Адаптивный дизайн для мобильных устройств */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+    }
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
