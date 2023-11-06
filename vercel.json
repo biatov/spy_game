@@ -1,0 +1,14 @@
+ {
+     "builds": [
+         {
+             "src": "spy_game/main.py",
+             "use": "@vercel/python"
+         }
+     ],
+     "routes": [
+         {
+             "src": "/(.*)",
+             "dest": "spy_game/main.py"
+         }
+     ]
+ }
