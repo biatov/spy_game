@@ -16,5 +16,10 @@ def get_spy_word():
     return jsonify({"spyWord": spy_word})
 
 
+@app.route("/info")
+def info():
+    return jsonify({"version": "0.1.0"})
+
+
 if __name__ == "__main__":
     app.run()
