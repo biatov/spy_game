@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, render_template
 
-from utils import get_word
+from .utils import get_word
 
 app = Flask(__name__)
 
