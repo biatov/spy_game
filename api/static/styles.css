@@ -6,13 +6,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Высота экрана */
+    height: 100vh;
     margin: 0;
 }
 
 /* Заголовок */
 h1 {
-    font-size: 32px; /* Увеличенный размер шрифта */
+    font-size: 36px; /* Увеличенный размер шрифта */
     margin-bottom: 20px;
 }
 
@@ -20,21 +20,23 @@ h1 {
 #game-container {
     max-width: 400px;
     margin: 0 auto;
-    text-align: center; /* Центрирование текста внутри контейнера */
+    text-align: center;
+    background-color: #fff;
+    padding: 20px; /* Добавление внутреннего отступа для контейнера */
 }
 
 /* Стиль для элемента <p> внутри #game-container */
 #game-container p {
-    font-size: 24px; /* Увеличенный размер шрифта для <p> элемента */
-    margin: 10px 0; /* Добавление небольшого отступа сверху и снизу */
+    font-size: 30px; /* Увеличенный размер шрифта для <p> элемента */
+    margin: 20px 0; /* Увеличенный отступ сверху и снизу */
 }
 
 /* Кнопка "Сыграть еще" */
 #play-again-button {
     display: block;
     margin: 0 auto;
-    font-size: 24px; /* Увеличенный размер шрифта */
-    padding: 15px 30px; /* Увеличенный размер кнопки */
+    font-size: 28px; /* Увеличенный размер шрифта для кнопки */
+    padding: 15px 30px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -48,8 +50,8 @@ h1 {
 
 /* Кнопки */
 button {
-    font-size: 24px; /* Увеличенный размер шрифта */
-    padding: 15px 30px; /* Увеличенный размер кнопки */
+    font-size: 28px; /* Увеличенный размер шрифта для кнопок */
+    padding: 15px 30px;
     margin: 10px;
     background-color: #007bff;
     color: #fff;
@@ -65,10 +67,18 @@ button:hover {
 /* Адаптивный дизайн для мобильных устройств */
 @media (max-width: 768px) {
     h1 {
-        font-size: 28px; /* Увеличенный размер шрифта для мобильных устройств */
+        font-size: 32px;
+    }
+    #game-container p {
+        font-size: 26px;
+        margin: 15px 0;
+    }
+    #play-again-button {
+        font-size: 24px;
+        padding: 12px 24px;
     }
     button {
-        font-size: 20px; /* Увеличенный размер шрифта для мобильных устройств */
-        padding: 12px 24px; /* Увеличенный размер кнопки для мобильных устройств */
+        font-size: 24px;
+        padding: 12px 24px;
     }
 }
