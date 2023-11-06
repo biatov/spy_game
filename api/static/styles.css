@@ -2,11 +2,17 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Высота экрана */
+    margin: 0;
 }
 
 /* Заголовок */
 h1 {
-    font-size: 24px;
+    font-size: 32px; /* Увеличенный размер шрифта */
     margin-bottom: 20px;
 }
 
@@ -14,14 +20,21 @@ h1 {
 #game-container {
     max-width: 400px;
     margin: 0 auto;
+    text-align: center; /* Центрирование текста внутри контейнера */
+}
+
+/* Стиль для элемента <p> внутри #game-container */
+#game-container p {
+    font-size: 24px; /* Увеличенный размер шрифта для <p> элемента */
+    margin: 10px 0; /* Добавление небольшого отступа сверху и снизу */
 }
 
 /* Кнопка "Сыграть еще" */
 #play-again-button {
     display: block;
     margin: 0 auto;
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: 24px; /* Увеличенный размер шрифта */
+    padding: 15px 30px; /* Увеличенный размер кнопки */
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -35,8 +48,8 @@ h1 {
 
 /* Кнопки */
 button {
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: 24px; /* Увеличенный размер шрифта */
+    padding: 15px 30px; /* Увеличенный размер кнопки */
     margin: 10px;
     background-color: #007bff;
     color: #fff;
@@ -52,10 +65,10 @@ button:hover {
 /* Адаптивный дизайн для мобильных устройств */
 @media (max-width: 768px) {
     h1 {
-        font-size: 20px;
+        font-size: 28px; /* Увеличенный размер шрифта для мобильных устройств */
     }
     button {
-        font-size: 14px;
-        padding: 8px 16px;
+        font-size: 20px; /* Увеличенный размер шрифта для мобильных устройств */
+        padding: 12px 24px; /* Увеличенный размер кнопки для мобильных устройств */
     }
 }
