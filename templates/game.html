@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игра "Шпион"</title>
+</head>
+<body>
+    <h1>Игра "Шпион"</h1>
+
+    <div id="game-container">
+        <button id="start-button">Начать игру</button>
+    </div>
+    <button id="play-again-button" style="display: none;">Сыграть еще</button>
+
+    <script>
+        document.getElementById("start-button").addEventListener("click", startGame);
+        document.getElementById("play-again-button").addEventListener("click", playAgain);
+
+        function startGame() {
+            document.getElementById("game-container").innerHTML = "";
+
+            var participantsCount = parseInt(prompt("Введите количество участников:"));
+            if (isNaN(participantsCount) || participantsCount <= 0) {
+                alert("Неправильное количество участников");
+                return;
+            }
+
+            var spyCount = parseInt(prompt("Введите количество шпионов:"));
+            if (isNaN(spyCount) || spyCount <= 0 || spyCount >= participantsCount) {
+                alert("Неправильное количество шпионов");
+                return;
+            }
+
+            var participants = [];
+            for (var i = 1; i <= participantsCount; i++) {
+                participants.push("Участник " + i);
+            }
+
+            var spyIndexes = [];
+            while (spyIndexes.length < spyCount) {
+                var spyIndex = Math.floor(Math.random() * participantsCount);
+                if (spyIndexes.indexOf(spyIndex) === -1) {
+                    spyIndexes.push(spyIndex);
+                }
+            }
+
+            var gameContainer = document.getElementById("game-container");
+            var currentIndex = 0;
+
+            function playGame(spyWord) {
+                if (currentIndex >= participantsCount) {
+                    var randomIndex = Math.floor(Math.random() * participantsCount);
+                    alert("Задает вопрос " + participants[randomIndex]);
+                    document.getElementById("play-again-button").style.display = "block";
+                    document.getElementById("startButton").style.display = "none";
+                    return;
+                }
+
+                var currentPlayer = participants[currentIndex];
+                var isSpy = spyIndexes.indexOf(currentIndex) !== -1;
+
+                gameContainer.innerHTML = "<h2>" + currentPlayer + "</h2>";
+                var message = document.createElement("p");
+                var viewButton = document.createElement("button");
+
+                if (!isSpy) {
+                    message.innerHTML = "Загаданное слово: " + spyWord;
+                } else {
+                    message.innerHTML = "Вы шпион";
+                }
+                viewButton.innerText = "Понял";
+
+                gameContainer.appendChild(message);
+                gameContainer.appendChild(viewButton);
+
+                viewButton.addEventListener("click", function() {
+                  var confirmButtonText = "Смотреть";
+                  if (participants[currentIndex + 1]) {
+                    currentPlayer = participants[currentIndex + 1];
+                  } else {
+                    currentPlayer = "";
+                    confirmButtonText = "Старт!";
+                  }
+                  gameContainer.innerHTML = "<h2>" + currentPlayer + "</h2>";
+                    message.innerHTML = "";
+                    viewButton.style.display = "none";
+
+                    var confirmButton = document.createElement("button");
+                    confirmButton.id = "startButton";
+                    confirmButton.innerText = confirmButtonText;
+                    confirmButton.addEventListener("click", function() {
+                        currentIndex++;
+                        playGame(spyWord);
+                    });
+                    gameContainer.appendChild(confirmButton);
+                });
+            }
+
+            getSpyWord().then(function(spyWord) {
+                playGame(spyWord);
+            });
+        }
+
+        function playAgain() {
+            location.reload();
+        }
+
+        async function getSpyWord() {
+            try {
+                var response = await fetch("/get-spy-word");
+                var data = await response.json();
+                if (data.spyWord) {
+                    return data.spyWord;
+                } else {
+                    return "Шпион";
+                }
+            } catch (error) {
+                console.error(error);
+                return "Шпион";
+            }
+        }
+    </script>
+</body>
+</html>
