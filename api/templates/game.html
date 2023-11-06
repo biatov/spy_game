@@ -107,17 +107,36 @@
             location.reload();
         }
 
+        function showLoadingText() {
+            var loadingText = document.createElement("p");
+            loadingText.textContent = "Генерация слова...";
+            var gameContainer = document.getElementById("game-container");
+            gameContainer.appendChild(loadingText);
+        }
+
+        function hideLoadingText() {
+            var loadingText = document.querySelector("p");
+            if (loadingText) {
+                loadingText.parentNode.removeChild(loadingText);
+            }
+        }
+
         async function getSpyWord() {
+            showLoadingText();
+
             try {
                 var response = await fetch("/get-spy-word");
                 var data = await response.json();
                 if (data.spyWord) {
+                    hideLoadingText();
                     return data.spyWord;
                 } else {
+                    hideLoadingText();
                     return "Шпион";
                 }
             } catch (error) {
                 console.error(error);
+                hideLoadingText();
                 return "Шпион";
             }
         }
