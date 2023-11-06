@@ -1,7 +1,7 @@
 import random
 import time
 
-from utils import get_word
+from api.utils import get_word
 
 # Choose a random word
 spy_word = get_word()
